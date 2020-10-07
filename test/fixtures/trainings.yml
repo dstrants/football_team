@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  team: one
+  scheduled_at: 2020-10-07 12:37:00
+  location: MyString
+
+two:
+  team: two
+  scheduled_at: 2020-10-07 12:37:00
+  location: MyString

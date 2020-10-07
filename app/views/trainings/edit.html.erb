@@ -1,0 +1,6 @@
+<h1>Editing Training</h1>
+
+<%= render 'form', training: [@team, @training] %>
+
+<%= link_to 'Show', team_training_path(@training.team, @training) %> |
+<%= link_to 'Back', team_trainings_path %>

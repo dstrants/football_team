@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Team:</strong>
+  <%= @training.team.name %>
+</p>
+
+<p>
+  <strong>Scheduled at:</strong>
+  <%= @training.scheduled_at %>
+</p>
+
+<p>
+  <strong>Location:</strong>
+  <%= @training.location %>
+</p>
+
+<ul>
+  <%- @training.team.players.each do |player|%>
+    <li style="color: <%= player.attended?(@training.id) ? 'green' : 'red' %>">
+      <a href="#" data-uid="<%= player.id %>" data-tid="<%= @training.id %>"
+         data-reflex="click->AttendanceReflex#toggle_attendace"
+         style="color: <%= player.attended?(@training.id) ? 'green' : 'red' %>">
+          <%= player.name %>
+      </a>
+    </li>
+  <%end%>
+</ul>
+
+<%= link_to 'Edit', edit_team_training_path(@training.team, @training) %> |
+<%= link_to 'Back', team_trainings_path %>

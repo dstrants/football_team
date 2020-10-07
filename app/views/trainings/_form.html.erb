@@ -1,0 +1,28 @@
+<%= form_with(model: training, local: true) do |form| %>
+  <% if training[1].errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(training[1].errors.count, "error") %> prohibited this training from being saved:</h2>
+
+      <ul>
+        <% training[1].errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <%= form.hidden_field :team_id, value: params[:team_id] %>
+
+  <div class="field">
+    <%= form.label :scheduled_at %>
+    <%= form.datetime_select :scheduled_at %>
+  </div>
+
+  <div class="field">
+    <%= form.label :location %>
+    <%= form.text_field :location %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
