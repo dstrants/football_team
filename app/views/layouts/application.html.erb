@@ -8,8 +8,22 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
-  <body>
-    <%= yield %>
+  <body class="c-app">
+    <%= render 'shared/sidebar' %>
+    <div class="c-wrapper">
+      <header class="c-header">
+        <%= render 'shared/header' %>
+      </header>
+      <div class="c-body">
+        <main class="c-main">
+          <div class="container">
+            <%= yield %>
+          </div>
+        </main>
+      </div>
+      <footer class="c-footer">
+        <!-- Footer content here -->
+      </footer>
+    </div>
   </body>
 </html>

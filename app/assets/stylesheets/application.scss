@@ -13,3 +13,7 @@
  *= require_tree .
  *= require_self
  */
+
+@import "_variables.scss";
+@import "@coreui/coreui/scss/coreui.scss";
+@import "custom.scss";

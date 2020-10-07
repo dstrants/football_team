@@ -1,5 +1,7 @@
 import { Controller } from 'stimulus'
 import StimulusReflex from 'stimulus_reflex'
+import '@fortawesome/fontawesome-free/js/all'
+import '@coreui/coreui/dist/js/coreui.bundle'
 
 /* This is your ApplicationController.
  * All StimulusReflex controllers should inherit from this class.

@@ -194,6 +194,8 @@ GEM
     turbolinks-source (5.2.0)
     tzinfo (1.2.7)
       thread_safe (~> 0.1)
+    view_component (2.19.1)
+      activesupport (>= 5.0.0, < 7.0)
     warden (1.2.9)
       rack (>= 2.0.9)
     web-console (4.0.4)
@@ -236,6 +238,7 @@ DEPENDENCIES
   stimulus_reflex (~> 3.3)
   turbolinks (~> 5)
   tzinfo-data
+  view_component (~> 2.19)
   web-console (>= 3.3.0)
   webdrivers
   webpacker (~> 4.0)

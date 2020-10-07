@@ -56,3 +56,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem "stimulus_reflex", "~> 3.3"
 
 gem "devise", "~> 4.7"
+
+gem "view_component", "~> 2.19", require: "view_component/engine"
