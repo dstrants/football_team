@@ -23,6 +23,9 @@
          style="color: <%= player.attended?(@training.id) ? 'green' : 'red' %>">
           <%= player.name %>
       </a>
+      <%- if player.attended?(@training.id) %>
+        <i class="fas fa-check text-success"></i>
+      <%end%>
     </li>
   <%end%>
 </ul>
