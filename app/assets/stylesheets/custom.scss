@@ -12,3 +12,11 @@ div.field {
         @extend .form-control !optional;
     }
 }
+
+div.actions{
+    input[type="submit"]{
+        @extend .btn !optional;
+        @extend .btn-info !optional;
+        @extend .float-right !optional;
+    }
+}

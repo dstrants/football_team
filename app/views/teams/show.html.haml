@@ -7,9 +7,22 @@
       = @team.name
     - component.with(:body) do
       %h2 Players
-      %ol.list-group.list-group-accent
+      %ul.list-group.list-group-accent
         - @team.players.each do |player|
           %li.list-group-item.list-group-item-accent-primary
             =link_to player.name, team_player_path(player)
             %span.badge.badge-pill{class: player.score_p >= 0.5 ? "badge-success" : "badge-warning"}
               = player.score_str
+        - if @team.players.empty?
+          .alert.alert-info
+            No players added to the team
+            = link_to "Add Now", new_team_player_path(@team)
+      %ul.list-group.list-group-accent
+        - @team.trainings.each do |training|
+          %li.list-group-item.list-group-item-accent-info
+            = link_to= "Session at #{training.scheduled_at.to_formatted_s(:short)}", team_training_path(@team, training)
+        - if @team.trainings.empty?
+          .alert.alert-info
+            No training scheduled for this team
+            = link_to "Add Now", new_team_training_path(@team)
+= render(BottomButtonComponent.new(color: "info", icon: "pencil-alt", link: edit_team_path))

@@ -1,0 +1,7 @@
+
+= render(CardComponent.new) do |component|
+  - component.with(:title) do
+    = "Edit #{@team.name}"
+    - component.with(:body) do
+      = render 'form', team: @team
+= render(BottomButtonComponent.new(color: "warning", icon: "trash", link: team_path(@team)))
