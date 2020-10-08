@@ -19,4 +19,12 @@ class Player < ApplicationRecord
   def toggle_attendance(training_id)
     attended?(training_id) ? undo_attend(training_id) : attend(training_id)
   end
+
+  def score_p
+    attendances.count / team.past_trainings.count
+  end
+
+  def score_str
+    "#{attendances.count}/#{team.past_trainings.count}"
+  end
 end

@@ -5,7 +5,21 @@ class Team < ApplicationRecord
 
     alias_attribute :trainer, :user
 
+    def season_start
+        now = DateTime.now
+        year = now.month >= 9 ? now.year : now.year - 1
+        DateTime.new(year, 9, 1, 0, 0)
+    end
+
+    def past_trainings
+        trainings.where(scheduled_at: season_start..DateTime.now).order(:scheduled_at)
+    end
+
+    def future_trainings
+        trainings.where(scheduled_at: DateTime.now..).order(:scheduled_at)
+    end
+
     def next_training
-        trainings.where(scheduled_at: DateTime.now..).order(:scheduled_at).first
+        future_trainings.order(:scheduled_at).first
     end
 end

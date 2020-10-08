@@ -11,5 +11,5 @@
         - @team.players.each do |player|
           %li.list-group-item.list-group-item-accent-primary
             =link_to player.name, team_player_path(player)
-            %span.badge.badge-primary.badge-pill
-              1
+            %span.badge.badge-pill{class: player.score_p >= 0.5 ? "badge-success" : "badge-warning"}
+              = player.score_str
