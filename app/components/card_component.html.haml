@@ -1,4 +1,4 @@
-.card
+.card{class: @size ? '' : "col-md-#{@size}"}
   .card-body
     %h5.card-title= title
     = body

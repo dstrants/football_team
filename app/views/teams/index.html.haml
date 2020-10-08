@@ -9,11 +9,21 @@
     - component.with(:body) do
       %ul.list-inline
         %li.list-inline-item
-          %i.far.fa-user
+          %i.far.fa-futbol
           Next Scheduled Training at:
-          = link_to team_training_path(team, team.next_training) do
-            = team.next_training.scheduled_at.strftime("%a %b %d")
+          - if team.next_training
+            = link_to team_training_path(team, team.next_training) do
+              = team.next_training.scheduled_at.strftime("%a %b %d")
+          - else
+            Never
+            = link_to "Add now", new_team_training_path(team)
+        %li.list-inline-item
+          %i.fas.fa-user
+          = "Trainer: #{team.trainer.email}"
         %li.list-inline-item
           %i.fas.fa-users
-          = "Trainer: #{team.trainer.email}"
+          = "Players: #{team.players.count}"
+- if @teams.empty?
+  %div.alert.alert-info{role: "alert"}
+    You have not teams. Create one using the button on the bottom right.
 = render(BottomButtonComponent.new(color: "info", icon: "plus", link: new_team_path))

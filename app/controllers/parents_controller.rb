@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class ParentsController < ApplicationController
   before_action :set_parent, only: [:show, :edit, :update, :destroy]
 

@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class Team < ApplicationRecord
     belongs_to :user, foreign_key: "user_id"
     has_many :players, foreign_key: "team_id"

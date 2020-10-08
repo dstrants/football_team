@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class BottomButtonComponent < ViewComponent::Base
   def initialize(color:, icon:, link:, icon_type: 's')
     @color = color

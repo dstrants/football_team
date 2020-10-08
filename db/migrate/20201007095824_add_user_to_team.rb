@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class AddUserToTeam < ActiveRecord::Migration[6.0]
   def change
     add_reference :teams, :user, null: false, foreign_key: true

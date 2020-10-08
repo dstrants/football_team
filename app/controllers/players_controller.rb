@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class PlayersController < ApplicationController
   before_action :set_player, only: [:show, :edit, :update, :destroy]
 

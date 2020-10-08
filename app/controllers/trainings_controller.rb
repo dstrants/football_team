@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class TrainingsController < ApplicationController
   before_action :set_training, only: [:show, :edit, :update, :destroy]
   before_action :set_team, only: %i[show edit create update new]

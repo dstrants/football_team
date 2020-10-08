@@ -4,3 +4,11 @@ a.btn-bottom{
     right: 10px;
     font-size: 16px;
 }
+
+div.field {
+    @extend .form-group !optional;
+
+    input, select{
+        @extend .form-control !optional;
+    }
+}

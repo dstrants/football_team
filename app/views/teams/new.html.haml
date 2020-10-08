@@ -1,0 +1,6 @@
+= render(CardComponent.new) do |component|
+  - component.with(:title) do
+    Create new team
+    - component.with(:body) do
+      = render 'form', team: @team
+= render(BottomButtonComponent.new(color: "warning", icon: "trash", link: teams_path))

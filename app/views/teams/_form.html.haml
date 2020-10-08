@@ -1,0 +1,17 @@
+= form_with(model: team, local: true) do |form|
+  - if team.errors.any?
+    #error_explanation.alert.alert-danger
+      %h2
+        = pluralize(team.errors.count, "error")
+        prohibited this team from being saved:
+      %ul
+        - team.errors.full_messages.each do |message|
+          %li= message
+  .field
+    = form.label :name
+    = form.text_field :name
+  .field
+    = form.label "Trainer"
+    = form.collection_select(:user_id, User.all, :id, :name)
+  .actions
+    = form.submit

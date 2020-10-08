@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
@@ -60,3 +61,5 @@ gem "devise", "~> 4.7"
 gem "view_component", "~> 2.19", require: "view_component/engine"
 
 gem "haml", "~> 5.2"
+
+gem "rubocop", "~> 0.93.0"
