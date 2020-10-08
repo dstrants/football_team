@@ -1,0 +1,15 @@
+%p#notice
+
+= render(CardComponent.new) do |component|
+  - component.with(:title) do
+    = link_to edit_team_path(@team) do
+      %i.fas.fa-tshirt
+      = @team.name
+    - component.with(:body) do
+      %h2 Players
+      %ol.list-group.list-group-accent
+        - @team.players.each do |player|
+          %li.list-group-item.list-group-item-accent-primary
+            =link_to player.name, team_player_path(player)
+            %span.badge.badge-primary.badge-pill
+              1

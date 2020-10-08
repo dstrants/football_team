@@ -7,8 +7,13 @@
         = team.name
       %i.fa.fa-edit.float-right
     - component.with(:body) do
-      %i.far.fa-user
-      Next Scheduled Training at:
-      = link_to team_training_path(team, team.next_training) do
-        = team.next_training.scheduled_at.strftime("%a %b %d")
+      %ul.list-inline
+        %li.list-inline-item
+          %i.far.fa-user
+          Next Scheduled Training at:
+          = link_to team_training_path(team, team.next_training) do
+            = team.next_training.scheduled_at.strftime("%a %b %d")
+        %li.list-inline-item
+          %i.fas.fa-users
+          = "Trainer: #{team.trainer.email}"
 = render(BottomButtonComponent.new(color: "info", icon: "plus", link: new_team_path))

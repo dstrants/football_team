@@ -3,6 +3,8 @@ class Team < ApplicationRecord
     has_many :players, foreign_key: "team_id"
     has_many :trainings, foreign_key: "team_id"
 
+    alias_attribute :trainer, :user
+
     def next_training
         trainings.where(scheduled_at: DateTime.now..).order(:scheduled_at).first
     end
