@@ -1,0 +1,13 @@
+= render(CardComponent.new) do |component|
+  - component.with(:title) do
+    = "New player for #{Team.find(params[:team_id]).name}"
+  - component.with(:body) do
+    = render 'form', player: @player
+
+= render(BottomButtonComponent.new(color: "warning", icon: "trash", link: team_players_path))
+
+= render(ModalComponent.new(id: "new_parent_modal")) do |component|
+  - component.with(:title) do
+    New Parent
+  - component.with(:body) do
+    = render "parents/form", parent: Parent.new

@@ -7,16 +7,53 @@
       = @team.name
     - component.with(:body) do
       %h2 Players
-      %ul.list-group.list-group-accent
+      %table.table.table-responsive-sm.table-hover.table-outline.mb-0
+        %thead.thead-light
+          %tr
+            %th.text-center
+              %i.fas.fa-users
+            %th Name
+            %th Attendance
+            %th Last Training
+        %tbody
+          - @team.players.each do |player|
+            %tr
+              %td.text-center
+                %i.fas.fa-user
+              %td
+                %div= player.name
+                .small.text-muted
+                  %span Parent
+                  |
+                  =link_to player.parent.name, parent_path(player.parent) 
+              %td
+                .clearfix
+                  .float-left
+                    %strong= player.score_p
+                .progress.progress-xs
+                  .progress-bar{class: player.score_p >= 0.5 ? "bg-success" : "bg-danger", aria: {valuemax: 100, valuemin: 0, valuenow: player.score_p * 100}, role: "progressbar", style: "width: #{player.score_p * 100}%"}
+              %td
+                - if last_training = player.last_training 
+                  .small.text-muted= last_training.scheduled_at.to_formatted_s(:short)
+                  %strong= time_ago_in_words last_training.scheduled_at
+                - else
+                  .small.text-muted No present in training yet.
+          %tr
+            %td{colspan: 4}
+              %i.fas.fa-plus.text-success
+              = "No players on this team." if @team.players.empty?
+              = link_to('Add new player', new_team_player_path(@team))
+
+      %ul.list-group.list-group-flush.d-lg-none
         - @team.players.each do |player|
-          %li.list-group-item.list-group-item-accent-primary
+          %li.list-group-item
             =link_to player.name, team_player_path(player)
             %span.badge.badge-pill{class: player.score_p >= 0.5 ? "badge-success" : "badge-warning"}
               = player.score_str
-        - if @team.players.empty?
-          .alert.alert-info
-            No players added to the team
-            = link_to "Add Now", new_team_player_path(@team)
+      - if @team.players.empty?
+        .alert.alert-info
+          No players added to the team
+          = link_to "Add Now", new_team_player_path(@team)
       %ul.list-group.list-group-accent
         - @team.trainings.each do |training|
           %li.list-group-item.list-group-item-accent-info

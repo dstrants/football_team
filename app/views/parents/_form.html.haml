@@ -1,0 +1,19 @@
+= form_with(model: parent, remote: true) do |form|
+  - if parent.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(parent.errors.count, "error")
+        prohibited this parent from being saved:
+      %ul
+        - parent.errors.full_messages.each do |message|
+          %li= message
+  .fields{data: {controller: 'parents'}}
+    .field
+      = form.label :name
+      = form.text_field :name, data: {target: 'parents.name'}
+    .field
+      = form.label :phone
+      = form.phone_field :phone, data: {target: 'parents.phone'}, id: "parent_number"
+    .actions
+      = form.submit
+      %a.btn.btn-success.float-right(href="#"){data: {action: "parents#createParent"}} Save

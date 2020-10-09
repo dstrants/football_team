@@ -1,0 +1,24 @@
+= form_with(model: player, remote: true, url: team_players_path, class: 'form-horizontal') do |form|
+  - if player.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(player.errors.count, "error")
+        prohibited this player from being saved:
+      %ul
+        - player.errors.full_messages.each do |message|
+          %li= message
+  = form.hidden_field :team_id, value: params[:team_id]
+  .field.row.justify-content-center
+    .col-sm-12.col-md-8.col-lg-6
+      = form.label :name
+      = form.text_field :name
+  .field.row.justify-content-center
+    .col-sm-12.col-md-8.col-lg-6
+      = form.label :parent_id
+      .d-flex.input-btn-group
+        = form.collection_select(:parent_id, Parent.all, :id, :name)
+        %span.input-group-append
+          %a.btn.btn-primary.text-white{data: {toggle: "modal", target: "#new_parent_modal"}} Add New
+
+  .actions
+    = form.submit

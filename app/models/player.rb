@@ -28,4 +28,10 @@ class Player < ApplicationRecord
   def score_str
     "#{attendances.count}/#{team.past_trainings.count}"
   end
+
+  def last_training
+    if attendances.any?
+      attendances.joins(:training).order(:scheduled_at).last.training
+    end
+  end
 end

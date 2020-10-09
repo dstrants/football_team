@@ -1,6 +1,6 @@
 a.btn-bottom{
     position: absolute;
-    bottom: 60px;
+    bottom: 10px;
     right: 10px;
     font-size: 16px;
 }
@@ -18,5 +18,31 @@ div.actions{
         @extend .btn !optional;
         @extend .btn-info !optional;
         @extend .float-right !optional;
+    }
+}
+
+// Makes the input group more smooth.
+.input-btn-group{
+    input{
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+    select {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        text-indent: 1px;
+        text-overflow: '';
+    }
+    span a.btn{
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+    }
+}
+
+.modal .actions{
+    input[type="submit"]{
+        display: none;
     }
 }
